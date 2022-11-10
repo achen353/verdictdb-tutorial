@@ -34,7 +34,8 @@ def run():
         autocommit=True
     )
     cur = mysql_conn.cursor()
-    cur.execute('SET GLOBAL query_cache_size=0')
+    # query_cache_size variable removed in MySQL 8.0.3 
+    # cur.execute('SET GLOBAL query_cache_size=0')
     start = time.time()
     cur.execute('SELECT avg(l_extendedprice) FROM tpch1g.lineitem')
     duration = time.time() - start
